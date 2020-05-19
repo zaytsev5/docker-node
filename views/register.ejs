@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Flatpickr CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+    <!-- My own CSS -->
+    <link rel="stylesheet" type="text/css" href="/panel.css">
+    <link rel="stylesheet" type="text/css" href="glider.css">
+
+     <!-- <link rel="stylesheet" type="text/css" href="/style.css"> -->
+
+
+     <script src="/owl.carousel.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+     <script src="https://unpkg.com/@glidejs/glide"></script>
+    <!-- Import font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--  Flatpickr  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+
+   <title>ticketMe| Tài khoản</title>
+  </head>
+  <body>
+<div class="container">
+  
+    
+<% include ./partials/header %>
+<div id="form-control">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <a href="/home" style="text-decoration: none">ticketMe</a>
+      </h1>
+      <% include ./partials/messages %>
+        <div class="form form-register active" id="dangki">
+            <form action="/user/account/register" method="POST">
+              <div class="form-group">
+               
+                <input
+                  type="name"
+                  id="name"
+                  name="name"
+                 placeholder="Name"
+                  value="<%= typeof name != 'undefined' ? name : '' %>"
+                />
+              </div>
+              <div class="form-group">
+              
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  value="<%= typeof email != 'undefined' ? email : '' %>"
+                />
+              </div>
+              <div class="form-group">
+              
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                placeholder="Password"
+                  value="<%= typeof password != 'undefined' ? password : '' %>"
+                />
+              </div>
+              <div class="form-group">
+           
+                <input
+                  type="password"
+                  id="password2"
+                  name="password2"
+                  placeholder="Confirm"
+                  value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+                />
+              </div>
+              <button type="submit" id="moveBtn">
+                <strong>Tiếp tục</strong>
+              </button>
+              <p class="lead mt-4"><a class="single" href="#" data-target="dangnhap">Đăng nhập</a></p>
+            </form>
+        </div>
+        <div class="form form-login" id="dangnhap">
+            <form action="/user/account/login" method="POST">
+              <div class="form-group">
+              
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  value="<%= typeof email != 'undefined' ? email : '' %>"
+                />
+              </div>
+             <div class="form-group">
+              
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                placeholder="Password"
+                  value="<%= typeof password != 'undefined' ? password : '' %>"
+                />
+              </div>
+              <button type="submit" id="moveBtn">
+                <strong>Tiếp tục</strong>
+              </button>
+              <p class="lead mt-4"><a style="text-decoration: none;" href="/user/reset">Quên mật khẩu? </a> <a class="single" href="#" data-target="dangki">Đăng kí</a></p>
+            </form>
+        </div>
+      
+    </div>
+  </div>
+</div>
+<% include ./partials/footer %>
+
+<script src="/user.js"></script>
+ <style>
+   
+    body{
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+
+    }
+    h1{
+      margin-bottom:20px;
+      color:var(--main);
+    }
+    .form-login,.form-register{
+      display:none;
+    }
+    .active{
+      display:block;
+      animation: fadein 1s;
+    }
+     input{
+      width: 70%;
+      height: 25px;
+      border:none;
+      border-bottom: 1px solid #d1d5da;
+      font-family: 'Montserrat', sans-serif;
+      height:3em;
+    }
+    .form{
+      padding:20px 0;
+    }
+    .form-register{
+      width:25%;
+      height:350px;
+      margin-left:50%;
+      transform:translate(-50%,0);
+      border-radius:2px;
+      border: 1px solid #d1d5da;
+      background: #ffffff;
+      
+     
+
+    }
+    .form-login{
+      width:25%;
+      height:250px;
+      margin-left:50%;
+      transform:translate(-50%,0);
+      border-radius:2px;
+      border: 1px solid #d1d5da;
+      background: #ffffff;
+
+    }
+    
+    form .form-group{
+      padding-bottom :20px;
+    }
+    #form-control{
+      text-align: center;
+      margin-top: 100px;
+    }
+    h1{
+      text-align: center;
+    }
+
+    #moveBtn{
+      width: 60%;
+      height: 40px;
+      background-color: var(--main);
+      color:white;
+      font-family: 'Montserrat', sans-serif;
+      border: none;
+      border-radius: 2px;
+
+    }
+    @keyframes fadein {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+  </style>
+
+ 
+</div>
+  
+  </body>
+
+
+</html>

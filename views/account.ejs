@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Flatpickr CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+    <!-- My own CSS -->
+    <link rel="stylesheet" type="text/css" href="/panel.css">
+    <link rel="stylesheet" type="text/css" href="glider.css">
+
+     <!-- <link rel="stylesheet" type="text/css" href="/style.css"> -->
+
+
+     <script src="/owl.carousel.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+     <script src="https://unpkg.com/@glidejs/glide"></script>
+    <!-- Import font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--  Flatpickr  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+
+   <title>ticketMe| Trang chủ</title>
+  </head>
+  <body>
+<div class="container">
+    <% include ./partials/header %>
+<div class="right-side">
+
+  <ul class="tabs">
+    <li class="tab-link current" data-tab="tab-1">Đổi mật khẩu</li>
+    <li class="tab-link" data-tab="tab-2">Đổi email</li>
+    <li class="tab-link" data-tab="tab-3">Nạp tiền</li>
+
+  </ul>
+
+  <div id="tab-1" class="tab-content current">
+    <form action="/user/me/pass" method="POST" enctype="formdata">
+      <input type="text" name="old" placeholder="Mật khẩu cũ"></br>
+      <input type="text" name="new" placeholder="Mật khẩu mới">
+      <button type="submit">Thay doi</button>
+    </form>
+    <% include ./partials/messages %>
+      
+  </div>
+  <div id="tab-2" class="tab-content">
+    <form action="/user/me/email" method="POST">
+      <input type="text" name="email" placeholder="Nhập email mới">
+      <input type="text" name="password" placeholder="Xác nhận mật khẩu">
+
+      <button type="submit">Thay doi</button>
+    </form>
+     
+  </div>
+  <div id="tab-3" class="tab-content">
+   <form action="/user/me/naptien">
+      <input type="text"></br>
+      <input type="text">
+      <input type="text">
+      <button type="submit">Thay doi</button>
+    </form>
+    
+  </div>
+  
+
+</div><!-- container -->
+    <% include ./partials/footer %>
+ <style>
+   
+
+
+.right-side {
+
+ 
+  width:35%;
+   margin: 100px 50%;
+  font-family: 'Roboto', sans-serif;
+  height:400px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.66667;
+}
+
+
+
+
+    ul.tabs{
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+      background:white;
+    }
+    ul.tabs li{
+      background: none;
+      color: #222;
+      display: inline-block;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    ul.tabs li.current{
+      background: #ededed;
+      color: #222;
+    }
+
+    .tab-content{
+      display: none;
+      background: #ededed;
+      padding: 15px;
+      height: 400px;
+
+    }
+
+    .tab-content.current{
+      display: inherit;
+    }
+
+ </style>
+<script >
+$(document).ready(function(){
+  
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+
+    $(this).addClass('current');
+    $("#"+tab_id).addClass('current');
+  })
+
+})
+
+</script>
+
+  </body>
+
+
+</html>
