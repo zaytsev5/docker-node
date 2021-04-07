@@ -1,23 +1,22 @@
-# Node.js & Passport Login
+# Docker Node MongoDB Example
 
-This is a user login and registration app using Node.js, Express, Passport, Mongoose, EJS and some other packages.
+> Simple example of a dockerized Node/Mongo app
 
-### Version: 2.0.0
+![Image](https://i.ibb.co/4Fgt31L/demo.gif)
 
-### Usage
+## Quick Start
 
-```sh
-$ npm install
+```bash
+# Run in Docker
+docker-compose up
+# use -d flag to run in background
+
+# Tear down
+docker-compose down
+
+# To be able to edit files, add volume to compose file
+volumes: ['./:/usr/src/app']
+
+# To re-build
+docker-compose build
 ```
-
-```sh
-$ npm start
-# Or run with Nodemon
-$ npm run dev
-
-# Visit http://localhost:5000
-```
-
-### MongoDB
-
-Open "config/keys.js" and add your MongoDB URI, local or Atlas

@@ -1,22 +1,46 @@
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
 
 const app = express();
 
-
-  
-
-// EJS
-app.get('/',(req, res) => res.render('show'));
-app.get('/booking-ticket',(req, res) => res.render('booking'));
-
-app.get('/me/stream',async(req,res) =>{
-	let videoOb = await fetch('https://localhost')
-})
-
 app.set('view engine', 'ejs');
 
-// Express body parser
-app.use(express.urlencoded({ extended: true }));
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
+app.use(express.urlencoded({ extended: false }));
+
+// Connect to MongoDB
+mongoose
+  .connect(
+    'mongodb+srv://zaytsev:'+ encodeURIComponent('zaytsev5') + '@test-users-e8bxl.mongodb.net/test?retryWrites=true&w=majority',
+    { useNewUrlParser: true },
+    { useUnifiedTopology: true }
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
+const User = require('./models/User');
+
+app.get('/', (req, res) => {
+  // let items = {
+  //   name: "nguyevanhai"
+  // }
+  // res.render('index', { items })
+  User.find()
+    .then(users => res.render('index', { users }))
+    .catch(err => res.status(404).json({ msg: 'No items found' }));
+});
+
+app.post('/item/add', (req, res) => {
+  let users = [{
+    email: "ivanxaytsev@gmail.com"
+  }]
+  res.render('index', { users })
+  // const newItem = new Item({
+  //   name: req.body.name
+  // });
+
+  // newItem.save().then(item => res.redirect('/'));
+});
+
+const port = 3000;
+
+app.listen(port, () => console.log('Server running on...'));
